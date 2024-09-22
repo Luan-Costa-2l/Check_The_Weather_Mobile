@@ -9,17 +9,15 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.Button
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
@@ -57,12 +55,14 @@ fun CheckTheWeather(modifier: Modifier = Modifier) {
         Text(
             text = "Clima",
             color = Color(0xFFFFFFFF),
-            fontSize = 32.sp,
+            fontSize = 48.sp,
             fontWeight = FontWeight.Bold
         )
         Row(verticalAlignment = Alignment.CenterVertically) {
             EditCityName(modifier = Modifier.weight(1f))
+
             Spacer(modifier = modifier.width(16.dp))
+
             Button(onClick = { /*TODO*/ }, modifier = modifier.wrapContentWidth()) {
                 Text(text = "Search")
             }
@@ -80,11 +80,12 @@ fun CheckTheWeather(modifier: Modifier = Modifier) {
 fun EditCityName(modifier: Modifier = Modifier) {
     var cityName by remember { mutableStateOf("") }
 
-    OutlinedTextField(
+    TextField(
         value = cityName,
         onValueChange = { cityName = it },
         label = { Text(text = "Write the city's name") },
-        modifier = modifier
+        modifier = modifier,
+        singleLine = true
     )
 }
 
